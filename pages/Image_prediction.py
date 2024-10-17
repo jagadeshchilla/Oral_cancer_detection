@@ -105,7 +105,10 @@ def show_image_prediction():
     # Initialize session state
     if 'saved_predictions' not in st.session_state:
         st.session_state.saved_predictions = []
-
+    if 'predictions' not in st.session_state:
+        st.session_state.predictions = []
+    if 'uploaded_images' not in st.session_state:
+        st.session_state.uploaded_images = []
     # Model selection
     model_selection = st.selectbox("Select a model", list(model_links.keys()))
 
