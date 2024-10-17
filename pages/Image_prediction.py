@@ -14,6 +14,16 @@ import gdown
 import tempfile
 
 def show_image_prediction():
+    # Initialize session state variables if not already initialized
+    if 'saved_predictions' not in st.session_state:
+        st.session_state.saved_predictions = []
+    if 'predictions' not in st.session_state:
+        st.session_state.predictions = []
+    if 'uploaded_images' not in st.session_state:
+        st.session_state.uploaded_images = []
+    if 'model_temp_file' not in st.session_state:
+        st.session_state.model_temp_file = None
+
     # Define the model links
     model_links = {
         'CNN': {
@@ -37,16 +47,6 @@ def show_image_prediction():
             'target_size': (224, 224)
         },
     }
-
-    # Initialize session state
-    if 'saved_predictions' not in st.session_state:
-        st.session_state.saved_predictions = []
-    if 'predictions' not in st.session_state:
-        st.session_state.predictions = []
-    if 'uploaded_images' not in st.session_state:
-        st.session_state.uploaded_images = []
-    if 'model_temp_file' not in st.session_state:
-        st.session_state.model_temp_file = None
 
     def load_existing_predictions():
         if os.path.exists('prediction_history.json'):
@@ -160,6 +160,7 @@ def show_image_prediction():
 
     with col1:
         if st.button('Clear'):
+            # Clear predictions and uploaded images
             st.session_state.predictions = []
             st.session_state.uploaded_images = []
             st.session_state.model_temp_file = None  # Reset the temp file
@@ -218,10 +219,6 @@ def show_image_prediction():
     st.sidebar.markdown(
         f"""
         <img src="data:image/jpeg;base64,{logo_base64}"
-            style="border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 90%; height: auto;" />
+            style="border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 90%; height: auto;">
         """, unsafe_allow_html=True
     )
-
-# Call the function to show image prediction
-if __name__ == "__main__":
-    show_image_prediction()
