@@ -8,8 +8,8 @@ pandas
 scikit-learn
 streamlit-lottie
 matplotlib
+graphviz
 pydot
 gdown
-graphviz
 
 
