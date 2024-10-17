@@ -37,7 +37,7 @@ model_links = {
     },
 }
 
-# Initialize session state
+# Initialize session state if it does not exist
 if 'saved_predictions' not in st.session_state:
     st.session_state.saved_predictions = []
 if 'predictions' not in st.session_state:
@@ -54,7 +54,8 @@ def load_existing_predictions():
     return []
 
 # Load existing predictions into session state
-st.session_state.saved_predictions = load_existing_predictions()
+if not st.session_state.saved_predictions:  # Check if it's empty
+    st.session_state.saved_predictions = load_existing_predictions()
 
 def save_predictions_to_history(uploaded_files, predictions, model_name):
     prediction_data = []
@@ -66,9 +67,7 @@ def save_predictions_to_history(uploaded_files, predictions, model_name):
             'prediction': actual
         })
 
-    # Check if predictions exist and extend saved_predictions list
-    if isinstance(st.session_state.saved_predictions, list):
-        st.session_state.saved_predictions.extend(prediction_data)
+    st.session_state.saved_predictions.extend(prediction_data)
 
     with open('prediction_history.json', 'w') as f:
         json.dump(st.session_state.saved_predictions, f, indent=4)
@@ -224,6 +223,6 @@ def show_image_prediction():
         """, unsafe_allow_html=True
     )
 
-# Streamlit application runner
-if __name__ == '__main__':
+# Call the function to show image prediction
+if __name__ == "__main__":
     show_image_prediction()
