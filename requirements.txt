@@ -10,3 +10,4 @@ streamlit-lottie
 matplotlib
 pydot
 gdown
+graphviz
