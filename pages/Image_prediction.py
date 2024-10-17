@@ -37,7 +37,7 @@ model_links = {
     },
 }
 
-# Initialize session state
+# Initialize session state if not already done
 if 'saved_predictions' not in st.session_state:
     st.session_state.saved_predictions = []
 if 'predictions' not in st.session_state:
@@ -85,16 +85,12 @@ def download_and_load_model(model_url):
     if st.session_state.model_temp_file is None:
         with tempfile.NamedTemporaryFile(suffix='.keras', delete=False) as tmp:
             st.session_state.model_temp_file = tmp.name
-            # Show toast message for downloading model
             st.toast("📥 Downloading model... Please wait.")
-            # Spinner for downloading the model
             with st.spinner("Downloading the model..."):
                 gdown.download(model_url, st.session_state.model_temp_file, quiet=False)
 
-            # Show toast message for download completion
             st.toast("✅ Model download completed!")
 
-    # Load the model from the temp file
     model = load_model(st.session_state.model_temp_file)
     return model
 
@@ -122,30 +118,24 @@ def show_image_prediction():
 
         X_test = load_uploaded_images(uploaded_files, target_size)
 
-        # Function to evaluate the model on uploaded images
         def evaluate_model(model, images):
             predictions = model.predict(images)
             predicted_classes = (predictions > 0.5).astype(int)
             return predicted_classes
 
-        # Add a button to trigger predictions
         if st.button('Predict'):
             st.info("Downloading and loading the model. This may take a few moments...")
 
-            # Download and load the model
             model_url = model_links[model_selection]['url']
             with st.spinner("Loading model..."):
                 model_to_use = download_and_load_model(model_url)
 
-            # Evaluate the model
             with st.spinner("Evaluating images..."):
                 st.session_state.predictions = evaluate_model(model_to_use, X_test)
                 st.session_state.uploaded_images = uploaded_files
 
-            # Show toast message for image prediction
             st.toast("✨ Images predicted successfully!")
 
-            # Display predictions
             st.subheader('Predictions:')
             for i, uploaded_file in enumerate(uploaded_files):
                 actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
@@ -162,16 +152,14 @@ def show_image_prediction():
         if st.button('Clear'):
             st.session_state.predictions = []
             st.session_state.uploaded_images = []
-            st.session_state.model_temp_file = None  # Reset the temp file
+            st.session_state.model_temp_file = None
             st.success("🗑️ Cleared all predictions and uploaded images.")
 
     with col2:
         if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
             if st.button('Save Predictions'):
-                save_predictions_to_history(
-                    st.session_state.uploaded_images, st.session_state.predictions, model_selection)
+                save_predictions_to_history(st.session_state.uploaded_images, st.session_state.predictions, model_selection)
 
-    # Download predictions functionality
     if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
         prediction_images = []
         for i, uploaded_file in enumerate(st.session_state.uploaded_images):
@@ -187,7 +175,6 @@ def show_image_prediction():
             buf.seek(0)
             prediction_images.append((buf, f'prediction_{i + 1}.png'))
 
-        # Create zip file for download
         zip_buffer = io.BytesIO()
         with zipfile.ZipFile(zip_buffer, 'w') as zf:
             for image_buf, filename in prediction_images:
@@ -201,20 +188,16 @@ def show_image_prediction():
             mime='application/zip'
         )
 
-    # Utility function to convert an image to base64 for display
     def image_to_base64(image: Image.Image) -> str:
         buffered = io.BytesIO()
         image.save(buffered, format="PNG")
         return base64.b64encode(buffered.getvalue()).decode()
 
-    # Display logo
-    logo_path = "./assets/logo.png"  # Update with your logo file path
+    logo_path = "./assets/logo.png"
     logo_image = Image.open(logo_path)
 
-    # Convert the logo image to base64
     logo_base64 = image_to_base64(logo_image)
 
-    # Display the logo with custom CSS styles
     st.sidebar.markdown(
         f"""
         <img src="data:image/jpeg;base64,{logo_base64}"
@@ -222,6 +205,5 @@ def show_image_prediction():
         """, unsafe_allow_html=True
     )
 
-# Call the function to show image prediction
 if __name__ == "__main__":
     show_image_prediction()
