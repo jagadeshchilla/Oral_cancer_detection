@@ -95,32 +95,56 @@ def download_and_load_model(model_url):
     model = load_model(st.session_state.model_temp_file)
     return model
 
+def load_uploaded_images(uploaded_files, target_size):
+    """Loads uploaded images and resizes them."""
+    images = []
+    for uploaded_file in uploaded_files:
+        image = load_img(uploaded_file, target_size=target_size)
+        image_array = img_to_array(image)
+        images.append(image_array)
+    return np.array(images)
+
+def evaluate_model(model, images):
+    """Evaluates the model on the given images."""
+    predictions = model.predict(images)
+    predicted_classes = (predictions > 0.5).astype(int)
+    return predicted_classes
+
+def on_model_change(selected_model):
+    """Callback function when the model is changed."""
+    st.session_state.selected_model = selected_model
+    st.session_state.uploaded_images = []  # Clear uploaded images when model changes
+
+def on_image_upload(uploaded_files):
+    """Callback function when images are uploaded."""
+    st.session_state.uploaded_images = uploaded_files
+
 def show_image_prediction():
     """Main function for showing image predictions."""
     st.title('Oral Cancer Detection Model Evaluation')
 
-    model_selection = st.selectbox("Select a model", list(model_links.keys()))
+    # Model selection dropdown with callback
+    model_selection = st.selectbox(
+        "Select a model", 
+        list(model_links.keys()), 
+        index=0,
+        on_change=on_model_change, 
+        args=(st.session_state.selected_model,)
+    )
 
+    # Image uploader with callback
     uploaded_files = st.file_uploader(
-        "Upload images", type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
+        "Upload images", 
+        type=['jpg', 'jpeg', 'png'], 
+        accept_multiple_files=True,
+        on_change=on_image_upload,
+        args=(uploaded_files,)
+    )
 
+    # Check if images have been uploaded
     if uploaded_files:
         target_size = model_links[model_selection]['target_size']
-
-        def load_uploaded_images(uploaded_files, target_size):
-            images = []
-            for uploaded_file in uploaded_files:
-                image = load_img(uploaded_file, target_size=target_size)
-                image_array = img_to_array(image)
-                images.append(image_array)
-            return np.array(images)
-
         X_test = load_uploaded_images(uploaded_files, target_size)
-
-        def evaluate_model(model, images):
-            predictions = model.predict(images)
-            predicted_classes = (predictions > 0.5).astype(int)
-            return predicted_classes
 
         if st.button('Predict'):
             st.info("Downloading and loading the model. This may take a few moments...")
@@ -131,7 +155,6 @@ def show_image_prediction():
 
             with st.spinner("Evaluating images..."):
                 st.session_state.predictions = evaluate_model(model_to_use, X_test)
-                st.session_state.uploaded_images = uploaded_files
 
             st.toast("✨ Images predicted successfully!")
 
@@ -206,10 +229,10 @@ def show_image_prediction():
     st.sidebar.markdown(
         f"""
         <img src="data:image/jpeg;base64,{logo_base64}"
-            style="border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 90%; height: auto;" />
-        """, unsafe_allow_html=True
+            style="border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 90%; height: auto;">
+        """,
+        unsafe_allow_html=True
     )
 
-# Call the function to show image prediction
 if __name__ == "__main__":
     show_image_prediction()
