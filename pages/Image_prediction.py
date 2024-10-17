@@ -37,15 +37,16 @@ model_links = {
     },
 }
 
-# Initialize session state
-if 'saved_predictions' not in st.session_state:
-    st.session_state.saved_predictions = []
-if 'predictions' not in st.session_state:
-    st.session_state.predictions = []
-if 'uploaded_images' not in st.session_state:
-    st.session_state.uploaded_images = []
-if 'model_temp_file' not in st.session_state:
-    st.session_state.model_temp_file = None
+# Initialize session state if not already set
+def init_session_state():
+    if 'saved_predictions' not in st.session_state:
+        st.session_state.saved_predictions = []
+    if 'predictions' not in st.session_state:
+        st.session_state.predictions = []
+    if 'uploaded_images' not in st.session_state:
+        st.session_state.uploaded_images = []
+    if 'model_temp_file' not in st.session_state:
+        st.session_state.model_temp_file = None
 
 def load_existing_predictions():
     if os.path.exists('prediction_history.json'):
@@ -57,10 +58,6 @@ def load_existing_predictions():
 st.session_state.saved_predictions = load_existing_predictions()
 
 def save_predictions_to_history(uploaded_files, predictions, model_name):
-    # Ensure 'saved_predictions' is initialized in session state
-    if 'saved_predictions' not in st.session_state:
-        st.session_state.saved_predictions = []
-
     prediction_data = []
     for i, uploaded_file in enumerate(uploaded_files):
         actual = 'Cancer' if predictions[i][0] == 0 else 'Non Cancer'
@@ -92,29 +89,17 @@ def download_and_load_model(model_url):
             st.toast("📥 Downloading model... Please wait.")
             with st.spinner("Downloading the model..."):
                 gdown.download(model_url, st.session_state.model_temp_file, quiet=False)
-
             st.toast("✅ Model download completed!")
 
     model = load_model(st.session_state.model_temp_file)
     return model
 
 def show_image_prediction():
-    # Streamlit UI
     st.title('Oral Cancer Detection Model Evaluation')
+    init_session_state()
 
-    # Initialize session state
-    if 'saved_predictions' not in st.session_state:
-        st.session_state.saved_predictions = []
-    if 'predictions' not in st.session_state:
-        st.session_state.predictions = []
-    if 'uploaded_images' not in st.session_state:
-        st.session_state.uploaded_images = []
-    # Model selection
     model_selection = st.selectbox("Select a model", list(model_links.keys()))
-
-    # Upload images
-    uploaded_files = st.file_uploader(
-        "Upload images", type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Upload images", type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
 
     if uploaded_files:
         target_size = model_links[model_selection]['target_size']
@@ -136,17 +121,14 @@ def show_image_prediction():
 
         if st.button('Predict'):
             st.info("Downloading and loading the model. This may take a few moments...")
-
             model_url = model_links[model_selection]['url']
             with st.spinner("Loading model..."):
                 model_to_use = download_and_load_model(model_url)
-
             with st.spinner("Evaluating images..."):
                 st.session_state.predictions = evaluate_model(model_to_use, X_test)
                 st.session_state.uploaded_images = uploaded_files
 
             st.toast("✨ Images predicted successfully!")
-
             st.subheader('Predictions:')
             for i, uploaded_file in enumerate(uploaded_files):
                 actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
@@ -158,14 +140,12 @@ def show_image_prediction():
                     st.warning(warning_message)
 
     col1, col2 = st.columns(2)
-
     with col1:
         if st.button('Clear'):
             st.session_state.predictions = []
             st.session_state.uploaded_images = []
             st.session_state.model_temp_file = None
             st.success("🗑️ Cleared all predictions and uploaded images.")
-
     with col2:
         if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
             if st.button('Save Predictions'):
@@ -206,9 +186,7 @@ def show_image_prediction():
 
     logo_path = "./assets/logo.png"
     logo_image = Image.open(logo_path)
-
     logo_base64 = image_to_base64(logo_image)
-
     st.sidebar.markdown(
         f"""
         <img src="data:image/jpeg;base64,{logo_base64}"
