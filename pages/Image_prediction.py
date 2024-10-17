@@ -37,7 +37,7 @@ model_links = {
     },
 }
 
-# Initialize session state for saved predictions and uploaded images
+# Initialize session state variables
 if 'saved_predictions' not in st.session_state:
     st.session_state.saved_predictions = []
 if 'predictions' not in st.session_state:
@@ -48,7 +48,6 @@ if 'model_temp_file' not in st.session_state:
     st.session_state.model_temp_file = None
 
 def load_existing_predictions():
-    """Load existing predictions from a JSON file."""
     if os.path.exists('prediction_history.json'):
         with open('prediction_history.json', 'r') as f:
             return json.load(f)
@@ -58,14 +57,14 @@ def load_existing_predictions():
 st.session_state.saved_predictions = load_existing_predictions()
 
 def save_predictions_to_history(uploaded_files, predictions, model_name):
-    """Save predictions to history in a JSON file."""
-    prediction_data = [
-        {
+    prediction_data = []
+    for i, uploaded_file in enumerate(uploaded_files):
+        actual = 'Cancer' if predictions[i][0] == 0 else 'Non Cancer'
+        prediction_data.append({
             'file_name': uploaded_file.name,
             'model_used': model_name,
-            'prediction': 'Cancer' if predictions[i][0] == 0 else 'Non Cancer'
-        } for i, uploaded_file in enumerate(uploaded_files)
-    ]
+            'prediction': actual
+        })
 
     st.session_state.saved_predictions.extend(prediction_data)
 
@@ -82,7 +81,7 @@ cancer_warning_messages = [
 ]
 
 def download_and_load_model(model_url):
-    """Download and load the model from the provided Google Drive URL."""
+    """Downloads and loads the model from the provided Google Drive URL."""
     if st.session_state.model_temp_file is None:
         with tempfile.NamedTemporaryFile(suffix='.keras', delete=False) as tmp:
             st.session_state.model_temp_file = tmp.name
@@ -93,40 +92,43 @@ def download_and_load_model(model_url):
 
     return load_model(st.session_state.model_temp_file)
 
-def load_uploaded_images(uploaded_files, target_size):
-    """Load and preprocess uploaded images."""
-    images = [img_to_array(load_img(uploaded_file, target_size=target_size)) for uploaded_file in uploaded_files]
-    return np.array(images)
-
-def evaluate_model(model, images):
-    """Evaluate the model on the uploaded images."""
-    predictions = model.predict(images)
-    return (predictions > 0.5).astype(int)
-
 def show_image_prediction():
-    """Main function to show the image prediction interface."""
+    # Streamlit UI
     st.title('Oral Cancer Detection Model Evaluation')
 
     # Model selection
     model_selection = st.selectbox("Select a model", list(model_links.keys()))
 
     # Upload images
-    uploaded_files = st.file_uploader("Upload images", type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
+    uploaded_files = st.file_uploader(
+        "Upload images", type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
 
     if uploaded_files:
         target_size = model_links[model_selection]['target_size']
+
+        def load_uploaded_images(uploaded_files, target_size):
+            images = []
+            for uploaded_file in uploaded_files:
+                image = load_img(uploaded_file, target_size=target_size)
+                image_array = img_to_array(image)
+                images.append(image_array)
+            return np.array(images)
+
         X_test = load_uploaded_images(uploaded_files, target_size)
+
+        # Function to evaluate the model on uploaded images
+        def evaluate_model(model, images):
+            predictions = model.predict(images)
+            return (predictions > 0.5).astype(int)
 
         # Add a button to trigger predictions
         if st.button('Predict'):
             st.info("Downloading and loading the model. This may take a few moments...")
 
-            # Download and load the model
             model_url = model_links[model_selection]['url']
             with st.spinner("Loading model..."):
                 model_to_use = download_and_load_model(model_url)
 
-            # Evaluate the model
             with st.spinner("Evaluating images..."):
                 st.session_state.predictions = evaluate_model(model_to_use, X_test)
                 st.session_state.uploaded_images = uploaded_files
@@ -154,12 +156,13 @@ def show_image_prediction():
             st.success("🗑️ Cleared all predictions and uploaded images.")
 
     with col2:
-        if st.session_state.predictions and st.session_state.uploaded_images:
+        if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
             if st.button('Save Predictions'):
-                save_predictions_to_history(st.session_state.uploaded_images, st.session_state.predictions, model_selection)
+                save_predictions_to_history(
+                    st.session_state.uploaded_images, st.session_state.predictions, model_selection)
 
     # Download predictions functionality
-    if st.session_state.predictions and st.session_state.uploaded_images:
+    if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
         prediction_images = []
         for i, uploaded_file in enumerate(st.session_state.uploaded_images):
             actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
@@ -188,8 +191,8 @@ def show_image_prediction():
             mime='application/zip'
         )
 
+    # Utility function to convert an image to base64 for display
     def image_to_base64(image: Image.Image) -> str:
-        """Convert an image to base64 for display."""
         buffered = io.BytesIO()
         image.save(buffered, format="PNG")
         return base64.b64encode(buffered.getvalue()).decode()
