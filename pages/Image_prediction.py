@@ -68,10 +68,6 @@ def save_predictions_to_history(uploaded_files, predictions, model_name):
             'prediction': actual
         })
 
-    # Ensure session state is correctly initialized
-    if 'saved_predictions' not in st.session_state:
-        st.session_state.saved_predictions = []
-
     st.session_state.saved_predictions.extend(prediction_data)
 
     with open('prediction_history.json', 'w') as f:
