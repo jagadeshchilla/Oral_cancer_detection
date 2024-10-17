@@ -15,11 +15,26 @@ import tempfile
 
 # Define the model links
 model_links = {
-    'CNN': {'url': 'https://drive.google.com/uc?id=1mtDtPtM-E7y20LlFlEPn1UI20fykFL2P', 'target_size': (128, 128)},
-    'ResNet50': {'url': 'https://drive.google.com/uc?id=1F47j2nr5JSa09mBWtUsWOkQYl5pLixqG', 'target_size': (260, 260)},
-    'EfficientNet': {'url': 'https://drive.google.com/uc?id=10mXZQWQ1RyGx6BqEsaJdcv8NcSKv-v8A', 'target_size': (260, 260)},
-    'DenseNet': {'url': 'https://drive.google.com/uc?id=14-7XGitYTJTYAksSI-LPS-b_lW7Dn8aC', 'target_size': (224, 224)},
-    'VGG19': {'url': 'https://drive.google.com/uc?id=19o-JaeGBDXpITObAVkII2sNFYp3qmGoH', 'target_size': (224, 224)},
+    'CNN': {
+        'url': 'https://drive.google.com/uc?id=1mtDtPtM-E7y20LlFlEPn1UI20fykFL2P',
+        'target_size': (128, 128)
+    },
+    'ResNet50': {
+        'url': 'https://drive.google.com/uc?id=1F47j2nr5JSa09mBWtUsWOkQYl5pLixqG',
+        'target_size': (260, 260)
+    },
+    'EfficientNet': {
+        'url': 'https://drive.google.com/uc?id=10mXZQWQ1RyGx6BqEsaJdcv8NcSKv-v8A',
+        'target_size': (260, 260)
+    },
+    'DenseNet': {
+        'url': 'https://drive.google.com/uc?id=14-7XGitYTJTYAksSI-LPS-b_lW7Dn8aC',
+        'target_size': (224, 224)
+    },
+    'VGG19': {
+        'url': 'https://drive.google.com/uc?id=19o-JaeGBDXpITObAVkII2sNFYp3qmGoH',
+        'target_size': (224, 224)
+    },
 }
 
 # Initialize session state
@@ -77,32 +92,18 @@ def download_and_load_model(model_url):
                 gdown.download(model_url, st.session_state.model_temp_file, quiet=False)
             st.toast("✅ Model download completed!")
 
-    return load_model(st.session_state.model_temp_file)
+    model = load_model(st.session_state.model_temp_file)
+    return model
 
 def load_uploaded_images(uploaded_files, target_size):
     """Loads and preprocesses uploaded images."""
-    images = []
-    for uploaded_file in uploaded_files:
-        image = load_img(uploaded_file, target_size=target_size)
-        images.append(img_to_array(image))
+    images = [img_to_array(load_img(uploaded_file, target_size=target_size)) for uploaded_file in uploaded_files]
     return np.array(images)
 
 def evaluate_model(model, images):
-    """Evaluates the model and returns predicted classes."""
+    """Evaluates the model on the provided images."""
     predictions = model.predict(images)
     return (predictions > 0.5).astype(int)
-
-def display_predictions(uploaded_files):
-    """Displays predictions and warning messages."""
-    st.subheader('Predictions:')
-    for i, uploaded_file in enumerate(uploaded_files):
-        actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
-        caption = f'Predicted: {actual}'
-        st.image(uploaded_file, caption=caption, use_column_width=True)
-
-        if actual == 'Cancer':
-            warning_message = random.choice(cancer_warning_messages)
-            st.warning(warning_message)
 
 def show_image_prediction():
     """Main function for showing image predictions."""
@@ -117,8 +118,8 @@ def show_image_prediction():
 
         if st.button('Predict'):
             st.info("Downloading and loading the model. This may take a few moments...")
-            model_url = model_links[model_selection]['url']
 
+            model_url = model_links[model_selection]['url']
             with st.spinner("Loading model..."):
                 model_to_use = download_and_load_model(model_url)
 
@@ -127,9 +128,19 @@ def show_image_prediction():
                 st.session_state.uploaded_images = uploaded_files
 
             st.toast("✨ Images predicted successfully!")
-            display_predictions(uploaded_files)
+
+            st.subheader('Predictions:')
+            for i, uploaded_file in enumerate(uploaded_files):
+                actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
+                caption = f'Predicted: {actual}'
+                st.image(uploaded_file, caption=caption, use_column_width=True)
+
+                if actual == 'Cancer':
+                    warning_message = random.choice(cancer_warning_messages)
+                    st.warning(warning_message)
 
     col1, col2 = st.columns(2)
+
     with col1:
         if st.button('Clear'):
             st.session_state.predictions = []
@@ -148,8 +159,7 @@ def show_image_prediction():
         for i, uploaded_file in enumerate(st.session_state.uploaded_images):
             actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
             image = Image.open(uploaded_file)
-            pred_image = image.copy()
-            plt.imshow(pred_image)
+            plt.imshow(image)
             plt.axis('off')
             plt.title(f'Predicted: {actual}')
             buf = io.BytesIO()
@@ -181,6 +191,7 @@ def show_image_prediction():
     # Display logo
     logo_path = "./assets/logo.png"  # Update with your logo file path
     logo_image = Image.open(logo_path)
+
     logo_base64 = image_to_base64(logo_image)
 
     # Display the logo with custom CSS styles
