@@ -157,8 +157,7 @@ def show_image_prediction():
     with col2:
         if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
             if st.button('Save Predictions'):
-                save_predictions_to_history(
-                    st.session_state.uploaded_images, st.session_state.predictions, model_selection)
+                save_predictions_to_history(st.session_state.uploaded_images, st.session_state.predictions, model_selection)
 
     # Download predictions functionality
     if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
