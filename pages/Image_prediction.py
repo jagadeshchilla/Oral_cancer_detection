@@ -225,4 +225,3 @@ def show_image_prediction():
 # Call the function to show image prediction
 if __name__ == "__main__":
     show_image_prediction()
-``
