@@ -102,6 +102,10 @@ def show_image_prediction():
     # Streamlit UI
     st.title('Oral Cancer Detection Model Evaluation')
 
+    # Initialize session state
+    if 'saved_predictions' not in st.session_state:
+        st.session_state.saved_predictions = []
+
     # Model selection
     model_selection = st.selectbox("Select a model", list(model_links.keys()))
 
@@ -162,8 +166,7 @@ def show_image_prediction():
     with col2:
         if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
             if st.button('Save Predictions'):
-                save_predictions_to_history(
-                    st.session_state.uploaded_images, st.session_state.predictions, model_selection)
+                save_predictions_to_history(st.session_state.uploaded_images, st.session_state.predictions, model_selection)
 
     if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
         prediction_images = []
