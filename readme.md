@@ -1,7 +1,7 @@
 # Oral Cancer Detection
 
 
-<img src="./assets/lottie.json" width="600" height="400" alt="Lottie Animation">
+<img src="./assets/gif1.gif" width="600" height="400" alt="GIF Demo">
 
 ## Project Status
 
