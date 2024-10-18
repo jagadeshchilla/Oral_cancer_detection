@@ -102,7 +102,7 @@ def show_image_prediction():
     # Upload images
     uploaded_files = st.file_uploader(
         "Upload images", type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
-    st.write(st.session_state)
+    
 
     if uploaded_files:
         target_size = model_links[model_selection]['target_size']
@@ -121,7 +121,8 @@ def show_image_prediction():
         def evaluate_model(model, images):
             predictions = model.predict(images)
             return (predictions > 0.5).astype(int)
-
+        
+        st.write(st.session_state)
         # Add a button to trigger predictions
         if 'Predict' not in st.session_state:
             st.session_state.Predict = False
