@@ -1,7 +1,7 @@
 # Oral Cancer Detection
 
 
-![GIF Demo](./assets/gif2.gif)
+<img src="./assets/gif2.gif" width="600" height="400" alt="GIF Demo">
 
 ## Project Status
 
