@@ -209,6 +209,10 @@ The project has been deployed on **Streamlit Cloud** to make the oral cancer det
 
 Streamlit Cloud provides a seamless way to host applications, ensuring that users can easily interact with the model and visualize results.
 
+#### Live App!
+
+check the live app[here](https://oral-cancer-detection-app.streamlit.app/)
+
 ### 2. Deployment Using Docker
 
 In addition to Streamlit Cloud, we also utilized **Docker** for deployment. The Docker deployment process involved:
