@@ -372,13 +372,13 @@ In this project, we utilized the following technologies:
 
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter Notebook" width="100" height="100"/>
-  <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit" width="100" height="100"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1200px-NumPy_logo_2020.svg.png" alt="NumPy" width="100" height="100"/>
+  <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit" width="200" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1200px-NumPy_logo_2020.svg.png" alt="NumPy" width="150" height="100"/>
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/TensorFlowLogo.png" alt="TensorFlow" width="100" height="100"/>
   <img src="https://w7.pngwing.com/pngs/978/465/png-transparent-learning-opencv-computer-vision-machine-learning-c-robotics-text-computer-logo-thumbnail.png" alt="OpenCV" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbk2Guoy3pIIK3-EqKfAMaUFnCY5zEOq20A&s" alt="Pandas" width="100" height="100"/>
   <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" width="100" height="100"/>
-  <img src="https://www.docker.com/wp-content/uploads/2023/08/logo-guide-logos-2.svg" alt="Docker" width="100" height="100"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Kubernetes_logo.svg" alt="Kubernetes" width="100" height="100"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLQKd_MRed_mZQlgrzQuUXVA3P39ssOVX8_g&s" alt="Docker" width="100" height="100"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiCagjnmOVr-2ohkjHjXGeFDS4eIFT0Y8ANw&s" alt="Kubernetes" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCLA9ea0B4x2fDCbtNn_z1c2j_EDQKpaJlfdXvU_rtwYB2OofRNUY4eDeUKRBQ3ErS-T4&usqp=CAU" alt="Graphviz" width="100" height="100"/>
 </p>
