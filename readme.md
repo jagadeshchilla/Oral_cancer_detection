@@ -1,6 +1,6 @@
 # Oral Cancer Detection
 
-![Logo](https://your-logo-url.com/logo.png)
+![Logo](./assets/logo1.png)
 
 ## Project Status
 
@@ -12,5 +12,5 @@
 
 ## Lottie Animation
 
-[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](https://lottiefiles.com/path-to-lottie)
+[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](./assets//lottie2.json)
 
