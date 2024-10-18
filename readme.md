@@ -382,3 +382,35 @@ In this project, we utilized the following technologies:
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiCagjnmOVr-2ohkjHjXGeFDS4eIFT0Y8ANw&s" alt="Kubernetes" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCLA9ea0B4x2fDCbtNn_z1c2j_EDQKpaJlfdXvU_rtwYB2OofRNUY4eDeUKRBQ3ErS-T4&usqp=CAU" alt="Graphviz" width="100" height="100"/>
 </p>
+
+## Installation
+
+To run the project locally, follow these steps:
+
+### 1. Download Requirements
+
+Ensure you have Python and `pip` installed, then install the required dependencies from the `requirements.txt` file.
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2.Clone the repository
+
+Clone the repository to your local machine.
+
+```bash
+git clone https://github.com/jagadeshchilla/oral_cancer_detection
+cd oral_cancer_detection
+
+```
+
+### 3.Run the Streamlit App
+
+Launch the Streamlit app locally using the following command:
+
+```bash
+streamlit run app.py
+```
+
+This will start the application, which you can access in your browser at http://localhost:8501.
