@@ -371,13 +371,13 @@ Overall, the models show great potential in assisting healthcare professionals w
 In this project, we utilized the following technologies:
 
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter Notebook" width="100" height="100"/>
-  <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit" width="200" height="100"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1200px-NumPy_logo_2020.svg.png" alt="NumPy" width="150" height="100"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/TensorFlowLogo.png" alt="TensorFlow" width="100" height="100"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCB_O5ElfCMcLpIG31sdFBhHS8uWLxj_4rmg&s" alt="Jupyter Notebook" width="100" height="100"/>
+  <img src="https://eu-images.contentstack.com/v3/assets/blt6b0f74e5591baa03/blt7c0bf7e21d4410b4/6319700b8cc2fa14e223aa27/8895.png?width=1280&auto=webp&quality=95&format=jpg&disable=upscale" alt="Streamlit" width="200" height="100"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRC2C9EVtvZjW_wQ3f9bEP2Fgla230C3kVYQ&s" alt="NumPy" width="100" height="100"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEsqbuvRgmIsxTT1R_bCdv8txFKkw2ylx5Lg&s" alt="TensorFlow" width="180" height="100"/>
   <img src="https://w7.pngwing.com/pngs/978/465/png-transparent-learning-opencv-computer-vision-machine-learning-c-robotics-text-computer-logo-thumbnail.png" alt="OpenCV" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbk2Guoy3pIIK3-EqKfAMaUFnCY5zEOq20A&s" alt="Pandas" width="100" height="100"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" width="100" height="100"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_IsXMTUN_T52cx7rtRLKau0sMkhpQPfzlqA&s" alt="Scikit-learn" width="200" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLQKd_MRed_mZQlgrzQuUXVA3P39ssOVX8_g&s" alt="Docker" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiCagjnmOVr-2ohkjHjXGeFDS4eIFT0Y8ANw&s" alt="Kubernetes" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCLA9ea0B4x2fDCbtNn_z1c2j_EDQKpaJlfdXvU_rtwYB2OofRNUY4eDeUKRBQ3ErS-T4&usqp=CAU" alt="Graphviz" width="100" height="100"/>
