@@ -13,6 +13,16 @@ import base64
 import gdown
 import tempfile
 
+# Initialize session state variables
+if 'saved_predictions' not in st.session_state:
+    st.session_state.saved_predictions = []
+if 'predictions' not in st.session_state:
+    st.session_state.predictions = []
+if 'uploaded_images' not in st.session_state:
+    st.session_state.uploaded_images = []
+if 'model_temp_file' not in st.session_state:
+    st.session_state.model_temp_file = None
+
 # Define the model links and their target sizes
 model_links = {
     'CNN': {
@@ -36,16 +46,6 @@ model_links = {
         'target_size': (224, 224)
     },
 }
-
-# Initialize session state variables
-if 'saved_predictions' not in st.session_state:
-    st.session_state.saved_predictions = []
-if 'predictions' not in st.session_state:
-    st.session_state.predictions = []
-if 'uploaded_images' not in st.session_state:
-    st.session_state.uploaded_images = []
-if 'model_temp_file' not in st.session_state:
-    st.session_state.model_temp_file = None
 
 def load_existing_predictions():
     if os.path.exists('prediction_history.json'):
