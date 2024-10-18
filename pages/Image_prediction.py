@@ -13,22 +13,6 @@ import base64
 import gdown
 import tempfile
 
-# Function to initialize session state variables
-def initialize_session_state():
-    if 'saved_predictions' not in st.session_state:
-        st.session_state.saved_predictions = []
-    if 'predictions' not in st.session_state:
-        st.session_state.predictions = []
-    if 'uploaded_images' not in st.session_state:
-        st.session_state.uploaded_images = []
-    if 'model_temp_file' not in st.session_state:
-        st.session_state.model_temp_file = None
-    if 'Predict' not in st.session_state:
-        st.session_state.Predict = False
-
-# Initialize session state variables
-initialize_session_state()
-
 # Define the model links and their target sizes
 model_links = {
     'CNN': {
@@ -52,6 +36,16 @@ model_links = {
         'target_size': (224, 224)
     },
 }
+
+# Initialize session state variables
+if 'saved_predictions' not in st.session_state:
+    st.session_state.saved_predictions = []
+if 'predictions' not in st.session_state:
+    st.session_state.predictions = []
+if 'uploaded_images' not in st.session_state:
+    st.session_state.uploaded_images = []
+if 'model_temp_file' not in st.session_state:
+    st.session_state.model_temp_file = None
 
 def load_existing_predictions():
     if os.path.exists('prediction_history.json'):
@@ -128,32 +122,34 @@ def show_image_prediction():
             return (predictions > 0.5).astype(int)
 
         # Add a button to trigger predictions
+        if 'Predict' not in st.session_state:
+            st.session_state.Predict = False
         if st.button('Predict'):
             st.session_state.Predict = True
+            
+            if st.session_state.Predict:
+                st.info("Downloading and loading the model. This may take a few moments...")
 
-        if st.session_state.Predict:
-            st.info("Downloading and loading the model. This may take a few moments...")
+                model_url = model_links[model_selection]['url']
+                with st.spinner("Loading model..."):
+                    model_to_use = download_and_load_model(model_url)
 
-            model_url = model_links[model_selection]['url']
-            with st.spinner("Loading model..."):
-                model_to_use = download_and_load_model(model_url)
+                with st.spinner("Evaluating images..."):
+                    st.session_state.predictions = evaluate_model(model_to_use, X_test)
+                    st.session_state.uploaded_images = uploaded_files
 
-            with st.spinner("Evaluating images..."):
-                st.session_state.predictions = evaluate_model(model_to_use, X_test)
-                st.session_state.uploaded_images = uploaded_files
+                st.toast("✨ Images predicted successfully!")
 
-            st.toast("✨ Images predicted successfully!")
+                # Display predictions
+                st.subheader('Predictions:')
+                for i, uploaded_file in enumerate(uploaded_files):
+                    actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
+                    caption = f'Predicted: {actual}'
+                    st.image(uploaded_file, caption=caption, use_column_width=True)
 
-            # Display predictions
-            st.subheader('Predictions:')
-            for i, uploaded_file in enumerate(uploaded_files):
-                actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
-                caption = f'Predicted: {actual}'
-                st.image(uploaded_file, caption=caption, use_column_width=True)
-
-                if actual == 'Cancer':
-                    warning_message = random.choice(cancer_warning_messages)
-                    st.warning(warning_message)
+                    if actual == 'Cancer':
+                        warning_message = random.choice(cancer_warning_messages)
+                        st.warning(warning_message)
 
     col1, col2 = st.columns(2)
 
@@ -165,13 +161,13 @@ def show_image_prediction():
             st.success("🗑️ Cleared all predictions and uploaded images.")
 
     with col2:
-        if st.session_state.get('predictions') and st.session_state.get('uploaded_images'):
+        if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
             if st.button('Save Predictions'):
                 save_predictions_to_history(
                     st.session_state.uploaded_images, st.session_state.predictions, model_selection)
 
     # Download predictions functionality
-    if st.session_state.get('predictions') and st.session_state.get('uploaded_images'):
+    if len(st.session_state.predictions) > 0 and len(st.session_state.uploaded_images) > 0:
         prediction_images = []
         for i, uploaded_file in enumerate(st.session_state.uploaded_images):
             actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
