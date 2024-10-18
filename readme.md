@@ -457,3 +457,87 @@ If you prefer to deploy the application using Kubernetes, follow these steps:
    ```bash
    kubectl get streamlit-service --url
    ```
+
+## Future Works
+
+As we continue to advance our oral cancer detection project, there are several exciting areas to explore for future improvements and development:
+
+1. **Integration with Real-time Data Sources**  
+   We aim to connect the system to real-time medical databases to automatically update the dataset with the latest oral cancer images, allowing continuous model learning and enhancement.
+
+2. **Enhancing Model Accuracy**  
+   Future work will focus on implementing advanced machine learning techniques such as attention mechanisms and transfer learning from larger medical datasets to further increase model accuracy and reduce false positives/negatives.
+
+3. **Support for Other Medical Conditions**  
+   Expanding the model to detect other forms of cancer or diseases by incorporating diverse medical datasets. This will broaden the system’s impact and utility in the medical community.
+
+4. **Mobile Application**  
+   Building a mobile-friendly interface to allow easy access for healthcare professionals and patients to utilize the system on-the-go for quick diagnoses.
+
+5. **Deploying to Multi-cloud Environment**  
+   Moving towards a more scalable and distributed deployment strategy using a multi-cloud environment such as AWS, Google Cloud, or Azure for enhanced scalability and fault tolerance.
+
+6. **Incorporating Explainable AI (XAI)**  
+   Adding interpretability to the model through explainable AI techniques will allow clinicians to understand how predictions are made and increase trust in AI-powered diagnostics.
+
+7. **Optimizing for Edge Devices**  
+   The model could be optimized for edge computing, enabling deployment on devices with limited computing resources, such as smartphones or portable medical devices, to bring AI-based diagnosis closer to patients in rural areas.
+
+8. **Improved Augmentation and Preprocessing**  
+   Experimenting with advanced image preprocessing techniques and augmentation methods to improve the model's ability to generalize across varied real-world scenarios.
+
+By addressing these areas, we hope to make our solution more robust, accessible, and valuable to the healthcare community, contributing to the fight against oral cancer.
+
+## References
+
+1. **Oral Cancer Image Dataset**  
+   Source of the dataset used for training and testing our model. Available at: [Oral Cancer Dataset](https://www.kaggle.com/datasets/zaidpy/oral-cancer-dataset)
+
+2. **Convolutional Neural Networks for Visual Recognition**  
+   A foundational paper explaining the use of CNNs in image classification tasks:  
+   _Krizhevsky, A., Sutskever, I., & Hinton, G. E._ (2012). "ImageNet Classification with Deep Convolutional Neural Networks." _Advances in Neural Information Processing Systems_, 25.
+
+3. **ResNet: Deep Residual Learning for Image Recognition**  
+   This paper covers the architecture of ResNet, which we used in our comparison.  
+   _He, K., Zhang, X., Ren, S., & Sun, J._ (2016). "Deep Residual Learning for Image Recognition." _Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)_.
+
+4. **DenseNet: Densely Connected Convolutional Networks**  
+   Explanation of DenseNet architecture, which is used for feature reuse:  
+   _Huang, G., Liu, Z., Van Der Maaten, L., & Weinberger, K. Q._ (2017). "Densely Connected Convolutional Networks." _Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)_.
+
+5. **EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks**  
+   Description of the EfficientNet architecture used in our project.  
+   _Tan, M., & Le, Q._ (2019). "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks." _Proceedings of the International Conference on Machine Learning (ICML)_.
+
+6. **VGGNet: Very Deep Convolutional Networks for Large-Scale Image Recognition**  
+   This research focuses on VGGNet, another model we compared.  
+   _Simonyan, K., & Zisserman, A._ (2015). "Very Deep Convolutional Networks for Large-Scale Image Recognition." _International Conference on Learning Representations (ICLR)_.
+
+7. **Streamlit Documentation**  
+   Official documentation for Streamlit, which was used to build the interactive UI: [Streamlit Docs](https://docs.streamlit.io)
+
+8. **Docker Documentation**  
+   Information on how to build and run containers for our project using Docker: [Docker Docs](https://docs.docker.com)
+
+9. **Kubernetes Documentation**  
+   Official Kubernetes documentation for container orchestration: [Kubernetes Docs](https://kubernetes.io/docs/)
+
+10. **TensorFlow Documentation**  
+    Reference for TensorFlow, used in model training: [TensorFlow](https://www.tensorflow.org)
+
+11. **Scikit-Learn Documentation**  
+    Documentation for Scikit-Learn, used for various ML-related tasks in this project: [Scikit-Learn Docs](https://scikit-learn.org/stable/)
+
+## 🚀 Live App Demo
+
+You can explore the live version of our Oral Cancer Detection project by visiting the following link:
+
+[Live Streamlit App](https://oral-cancer-detection-app.streamlit.app/)🌐
+
+### How to Use:
+
+- Upload an image of an oral scan.
+- The model will classify whether the image indicates cancer or non-cancer.
+- Probability below **0.5** indicates cancer, while above **0.5** suggests non-cancer.
+
+Feel free to try the app and provide feedback!
