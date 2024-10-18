@@ -167,7 +167,7 @@ A **Convolutional Neural Network (CNN)** is the foundation for most image classi
 - **Use Case**: It’s often used for transfer learning, leveraging pretrained weights to adapt quickly to the specific task of oral cancer detection.
 - **Limitations**: VGG19 is resource-intensive and slower compared to other models, which can make training and inference more time-consuming.
 
-## 📊 Model Comparisons
+## Model Comparisons
 
 Below is a visual representation of the differences in performance across the models used:
 
