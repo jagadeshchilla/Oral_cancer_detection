@@ -1,7 +1,9 @@
 # Oral Cancer Detection
 
 
-<img src="./assets/gif1.gif" width="600" height="400" alt="GIF Demo">
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+<dotlottie-player src="https://lottie.host/93dcd5a4-6abd-4fc2-8693-519e5d451c21/EtsDtrofdW.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
 
 ## Project Status
 
