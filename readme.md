@@ -27,4 +27,16 @@
 ![GitHub](https://img.shields.io/badge/GitHub-Enabled-black.svg)
 
 
+## Overview
 
+The **Oral Cancer Detection** project aims to develop a robust machine learning model that leverages advanced image processing techniques to accurately identify signs of oral cancer in images. This project integrates various technologies and frameworks, providing a seamless user experience for both medical professionals and patients.
+
+## Key Features
+
+- **📈 Accurate Detection:** Utilizes state-of-the-art deep learning algorithms for precise identification of oral cancer.
+- **🖼️ Image Processing:** Implements OpenCV for enhanced image preprocessing, ensuring high-quality input for the model.
+- **📊 User-Friendly Interface:** Built with Streamlit to offer an intuitive interface for users to upload images and view results.
+- **🚀 Fast Performance:** Optimized for quick processing and real-time feedback.
+- **📊 Data Visualization:** Includes interactive visualizations using Matplotlib and Graphviz for better understanding of model predictions.
+- **🔄 Model Training and Evaluation:** Supports training with various datasets and evaluating model performance with scikit-learn.
+- **☁️ Cloud Deployment:** Enables deployment using Kubernetes for scalability and reliability.
