@@ -339,3 +339,18 @@ To run your application locally using Minikube, follow these steps:
    ```bash
    kubectl get streamlit-service --url
    ```
+
+### Results
+
+The following table summarizes the performance of various deep learning models used for oral cancer detection based on accuracy and probability metrics:
+
+![Model Performance Comparison](./assets/diff2.png)
+
+#### Observations:
+
+- As we know, during model training, a probability less than **0.5** indicates **cancer**, while a probability greater than **0.5** indicates **non-cancer**.
+- **ResNet50** showed the highest accuracy at **98.2%**, with a balanced probability between cancer and non-cancer predictions.
+- **VGG19** performed well, achieving **96.8%** accuracy, while maintaining a similar average probability for both cancer and non-cancer predictions.
+- **DenseNet121** also showed strong results, with **94%** accuracy and relatively even probabilities.
+- **CNN** displayed a solid accuracy of **93.2%**, though its average cancer probability was lower compared to other models.
+- **EfficientNet** achieved the lowest accuracy at **85.4%**, but its non-cancer probability was the highest, making it more conservative in detecting non-cancer cases.
