@@ -1,27 +1,16 @@
+# Oral Cancer Detection
 
-# Oral Cancer Detection App
+![Logo](https://your-logo-url.com/logo.png)
 
-This project is an Oral Cancer Detection application built using Streamlit and TensorFlow.
+## Project Status
 
-## Live Demo
+![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
+![Keras](https://img.shields.io/badge/Keras-2.x-red.svg)
+![CNN](https://img.shields.io/badge/Model-CNN-green.svg)
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)
 
-You can view the live application at the following URL:
+## Lottie Animation
 
-[Live Demo of Oral Cancer Detection App](https://oral-cancer-detection-app.streamlit.app/)
+[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](https://lottiefiles.com/path-to-lottie)
 
-## Features
-
-- Image Prediction
-- Model Comparison
-- Real-Time Detection
-- History of Predictions
-
-## Installation
-
-To run this app locally, follow these steps:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/oral-cancer-detection.git
-   cd oral-cancer-detection
