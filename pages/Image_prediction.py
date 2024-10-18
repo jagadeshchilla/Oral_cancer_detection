@@ -1,5 +1,5 @@
-import streamlit as st
 import numpy as np
+import streamlit as st
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from tensorflow.keras.models import load_model
 import io
@@ -13,17 +13,21 @@ import base64
 import gdown
 import tempfile
 
-# Ensure all session state variables are initialized at the beginning
-if 'saved_predictions' not in st.session_state:
-    st.session_state.saved_predictions = []
-if 'predictions' not in st.session_state:
-    st.session_state.predictions = []
-if 'uploaded_images' not in st.session_state:
-    st.session_state.uploaded_images = []
-if 'model_temp_file' not in st.session_state:
-    st.session_state.model_temp_file = None
-if 'Predict' not in st.session_state:
-    st.session_state.Predict = False
+# Initialize all session state variables at the top of the script to avoid attribute errors
+def initialize_session_state():
+    if 'saved_predictions' not in st.session_state:
+        st.session_state.saved_predictions = []
+    if 'predictions' not in st.session_state:
+        st.session_state.predictions = []
+    if 'uploaded_images' not in st.session_state:
+        st.session_state.uploaded_images = []
+    if 'model_temp_file' not in st.session_state:
+        st.session_state.model_temp_file = None
+    if 'Predict' not in st.session_state:
+        st.session_state.Predict = False
+
+# Call this function at the start of the script
+initialize_session_state()
 
 # Define the model links and their target sizes
 model_links = {
@@ -49,17 +53,15 @@ model_links = {
     },
 }
 
-# Function to load existing predictions
 def load_existing_predictions():
     if os.path.exists('prediction_history.json'):
         with open('prediction_history.json', 'r') as f:
             return json.load(f)
     return []
 
-# Load predictions into session state at the start
+# Load existing predictions into session state
 st.session_state.saved_predictions = load_existing_predictions()
 
-# Function to save predictions to history
 def save_predictions_to_history(uploaded_files, predictions, model_name):
     prediction_data = []
     for i, uploaded_file in enumerate(uploaded_files):
@@ -76,7 +78,6 @@ def save_predictions_to_history(uploaded_files, predictions, model_name):
         json.dump(st.session_state.saved_predictions, f, indent=4)
     st.success("Predictions saved to history successfully.")
 
-# Cancer warning messages
 cancer_warning_messages = [
     "Please consult a doctor immediately.",
     "We recommend scheduling a medical check-up soon.",
@@ -85,7 +86,6 @@ cancer_warning_messages = [
     "This result may be concerning. Please consult a specialist."
 ]
 
-# Function to download and load the model from a Google Drive link
 def download_and_load_model(model_url):
     """Downloads and loads the model from the provided Google Drive URL."""
     if st.session_state.model_temp_file is None:
@@ -98,8 +98,8 @@ def download_and_load_model(model_url):
 
     return load_model(st.session_state.model_temp_file)
 
-# Function to predict images
 def show_image_prediction():
+    # Streamlit UI
     st.title('Oral Cancer Detection Model Evaluation')
 
     # Model selection
@@ -122,7 +122,7 @@ def show_image_prediction():
 
         X_test = load_uploaded_images(uploaded_files, target_size)
 
-        # Function to evaluate the model
+        # Function to evaluate the model on uploaded images
         def evaluate_model(model, images):
             predictions = model.predict(images)
             return (predictions > 0.5).astype(int)
@@ -155,7 +155,6 @@ def show_image_prediction():
                     warning_message = random.choice(cancer_warning_messages)
                     st.warning(warning_message)
 
-    # Column buttons for clearing or saving predictions
     col1, col2 = st.columns(2)
 
     with col1:
@@ -201,6 +200,26 @@ def show_image_prediction():
             mime='application/zip'
         )
 
+    # Utility function to convert an image to base64 for display
+    def image_to_base64(image: Image.Image) -> str:
+        buffered = io.BytesIO()
+        image.save(buffered, format="PNG")
+        return base64.b64encode(buffered.getvalue()).decode()
+
+    # Display logo
+    logo_path = "./assets/logo.png"  # Update with your logo file path
+    logo_image = Image.open(logo_path)
+
+    # Convert the logo image to base64
+    logo_base64 = image_to_base64(logo_image)
+
+    # Display the logo with custom CSS styles
+    st.sidebar.markdown(
+        f"""
+        <img src="data:image/jpeg;base64,{logo_base64}"
+            style="border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 200px;"/>
+        """, unsafe_allow_html=True
+    )
+
 # Call the function to show image prediction
-if __name__ == "__main__":
-    show_image_prediction()
+show_image_prediction()
