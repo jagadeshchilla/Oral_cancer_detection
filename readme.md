@@ -83,3 +83,51 @@ This solution includes the following key components:
 - **☁️ Cloud-Ready Deployment:** The model is scalable and can be deployed using Kubernetes for real-time and widespread use in clinical settings.
 
 This approach not only makes cancer detection faster and more accessible but also enhances diagnostic precision, leading to better patient outcomes and earlier interventions. 🌟
+
+## Dataset
+
+### About the Dataset
+
+Introducing the **Oral Cancer Image Dataset**! This dataset comprises 500 oral cancer images and 450 non-cancer oral images, all meticulously labeled for seamless classification. 🦷 The dataset is designed to support research and development in the field of oral cancer detection using advanced machine learning algorithms.
+
+With a balanced representation of cancer and non-cancer samples, it allows researchers to explore innovative approaches to enhance diagnostic accuracy. 🔬 This dataset serves as a valuable resource for the healthcare community, fostering advancements in early detection and intervention for oral cancer. 💡
+
+You can access the dataset [here](https://www.kaggle.com/datasets/zaidpy/oral-cancer-dataset) 📂.
+
+## Methodologies
+
+<details>
+  <summary>📊 Click to view the Flowchart</summary>
+  
+  ![Flowchart](./assets/flow.jpg)
+  
+</details>
+
+### Process Overview
+
+1. **📥 Data Collection:**
+   Medical images are sourced from reliable and reputable datasets, ensuring a comprehensive mix of oral cancer and non-cancer samples. This provides a strong foundation for training the model, ensuring that it learns from high-quality, representative data.
+
+2. **🛠️ Preprocessing:**
+   To ensure consistency, all images are resized to a standard dimension of 260x260 pixels with 3 color channels (RGB). The images are normalized to a range between [0,1] for smoother training. Image augmentation techniques, such as rotation and flipping, are applied to make the model robust against variations and prevent overfitting.
+
+3. **🧠 Model Selection:**
+   A range of cutting-edge deep learning architectures are chosen for comparison:
+   - **CNN (Convolutional Neural Networks):** A standard deep learning model for image classification.
+   - **ResNet50:** A deeper network that addresses the vanishing gradient problem using skip connections.
+   - **DenseNet121:** A model that efficiently passes gradients between layers using dense connections.
+   - **EfficientNetB2:** A state-of-the-art model that balances accuracy and efficiency through compound scaling.
+   - **VGG19:** A popular deep learning model with a simple, uniform architecture known for its performance in image tasks.
+
+4. **🎓 Training:**
+   Each model is trained using the preprocessed images. During training, the models adjust their weights using a process called **backpropagation** to minimize the loss function. The training continues for several epochs until the models converge, or achieve optimal performance on the training data.
+
+5. **📊 Evaluation:**
+   After training, the models are evaluated based on:
+   - **Accuracy:** The proportion of correctly predicted labels.
+   - **Speed:** How quickly the model processes new data.
+   - **Memory usage:** The amount of system resources required by the model.
+   Performance metrics such as **precision**, **recall**, and **F1 score** are calculated to assess how well the models balance true positives and false negatives.
+
+6. **📈 Comparison:**
+   Once all models are trained and evaluated, their performances are compared. The model that strikes the best balance between accuracy, speed, and resource efficiency is selected for deployment. This ensures that the deployed model is optimal for real-world use.
