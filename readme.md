@@ -376,7 +376,7 @@ In this project, we utilized the following technologies:
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRC2C9EVtvZjW_wQ3f9bEP2Fgla230C3kVYQ&s" alt="NumPy" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEsqbuvRgmIsxTT1R_bCdv8txFKkw2ylx5Lg&s" alt="TensorFlow" width="180" height="100"/>
   <img src="https://w7.pngwing.com/pngs/978/465/png-transparent-learning-opencv-computer-vision-machine-learning-c-robotics-text-computer-logo-thumbnail.png" alt="OpenCV" width="100" height="100"/>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbk2Guoy3pIIK3-EqKfAMaUFnCY5zEOq20A&s" alt="Pandas" width="100" height="100"/>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbk2Guoy3pIIK3-EqKfAMaUFnCY5zEOq20A&s" alt="Pandas" width="150" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_IsXMTUN_T52cx7rtRLKau0sMkhpQPfzlqA&s" alt="Scikit-learn" width="200" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLQKd_MRed_mZQlgrzQuUXVA3P39ssOVX8_g&s" alt="Docker" width="100" height="100"/>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiCagjnmOVr-2ohkjHjXGeFDS4eIFT0Y8ANw&s" alt="Kubernetes" width="100" height="100"/>
