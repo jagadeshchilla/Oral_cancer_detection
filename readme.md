@@ -3,7 +3,7 @@
 
 <img src="./assets/lottie.gif" width="600" height="400" alt="GIF Demo">
 
-## Project Status
+## Tech Used
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Jupyter Notebook](https://img.shields.io/badge/Jupyter_Notebook-Enabled-orange.svg)
@@ -24,6 +24,7 @@
 ![Pydot](https://img.shields.io/badge/Pydot-Enabled-blue.svg)
 ![Gdown](https://img.shields.io/badge/Gdown-5.2.0-orange.svg)
 ![LibGL1](https://img.shields.io/badge/LibGL1-Enabled-darkgreen.svg)
+![GitHub](https://img.shields.io/badge/GitHub-Enabled-black.svg)
 
 
 
