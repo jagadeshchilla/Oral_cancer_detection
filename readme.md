@@ -51,9 +51,10 @@ The **Oral Cancer Detection** project aims to develop a robust machine learning 
 9. [Deployment](#deployment)
 10. [Results](#results)
 11. [Conclusion](#conclusion)
-12. [Installation](#installation)
-13. [Future Works](#future-works)
-14. [References](#references)
+12. [Technolgies Used](#technolgies-used)
+13. [Installation](#installation)
+14. [Future Works](#future-works)
+15. [References](#references)
 
 
 ## Introduction
@@ -131,3 +132,45 @@ You can access the dataset [here](https://www.kaggle.com/datasets/zaidpy/oral-ca
 
 6. **📈 Comparison:**
    Once all models are trained and evaluated, their performances are compared. The model that strikes the best balance between accuracy, speed, and resource efficiency is selected for deployment. This ensures that the deployed model is optimal for real-world use.
+
+## Models Used
+
+The following deep learning models were utilized in this project to compare their performance and select the best model for oral cancer detection:
+
+### 1. **Convolutional Neural Network (CNN)** 
+A **Convolutional Neural Network (CNN)** is the foundation for most image classification tasks. CNNs are composed of convolutional layers that automatically learn spatial hierarchies of features (such as edges, textures, and objects). In this project:
+- **Advantages**: CNNs are relatively easy to train and excel in capturing local features in images.
+- **Use Case**: It serves as a baseline model, offering a simpler but powerful approach for detecting cancerous tissues in oral images.
+- **Limitations**: While CNNs work well on simpler problems, they may struggle with more complex patterns found in medical data.
+
+### 2. **ResNet50**
+**ResNet50 (Residual Networks)** is a deeper network with 50 layers that incorporates **residual connections** (or skip connections) to solve the vanishing gradient problem common in deep networks. This makes it highly effective for complex tasks like medical image classification.
+- **Advantages**: The residual connections enable the network to learn much deeper representations without degrading performance.
+- **Use Case**: ResNet50 excels in detecting intricate patterns in medical images, making it a great candidate for identifying cancerous tissues.
+- **Limitations**: As the network becomes deeper, it requires more computation power, increasing the time required for training.
+
+### 3. **DenseNet121**
+**DenseNet121 (Densely Connected Convolutional Networks)** employs dense blocks, where each layer is directly connected to every other layer, allowing feature reuse and improving efficiency.
+- **Advantages**: DenseNet121 captures detailed information by reusing features, which can help the model efficiently learn the critical features needed for cancer detection.
+- **Use Case**: Its ability to learn complex features makes it well-suited for cancer detection, as it captures small yet significant features in oral images.
+- **Limitations**: DenseNet can be computationally demanding, especially when dealing with large datasets.
+
+### 4. **EfficientNetB2**
+**EfficientNetB2** is part of the EfficientNet family, which scales model dimensions—width, depth, and resolution—in a balanced manner, optimizing performance while using fewer parameters.
+- **Advantages**: EfficientNetB2 provides high accuracy with fewer parameters, which is beneficial for resource-constrained environments (e.g., mobile applications or cloud-based deployments).
+- **Use Case**: Its efficiency and accuracy make it an ideal choice for real-time cancer detection tasks where computational resources may be limited.
+- **Limitations**: While it uses fewer parameters, EfficientNetB2 may still require considerable tuning and experimentation to optimize performance on highly complex tasks.
+
+### 5. **VGG19**
+**VGG19** is a very deep network with 19 layers, known for its simplicity and high performance in transfer learning tasks. It’s frequently used in medical imaging tasks due to its ability to generalize well from pretrained weights.
+- **Advantages**: VGG19 is straightforward in architecture and powerful when fine-tuned on specific tasks, such as detecting cancer in oral images.
+- **Use Case**: It’s often used for transfer learning, leveraging pretrained weights to adapt quickly to the specific task of oral cancer detection.
+- **Limitations**: VGG19 is resource-intensive and slower compared to other models, which can make training and inference more time-consuming.
+
+## 📊 Model Comparisons
+
+Below is a visual representation of the differences in performance across the models used:
+
+![Model Comparisons](./assets/diff.png)
+
+
