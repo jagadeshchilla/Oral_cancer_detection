@@ -311,3 +311,27 @@ spec:
       targetPort: 8501
       nodePort: 30000 # You can choose any available port from 30000 to 32767
 ```
+
+### Minikube Commands
+
+To run your application locally using Minikube, follow these steps:
+
+1. **Start Minikube**: Use the following command to start your Minikube cluster:
+
+   ```bash
+   minikube start
+
+   ```
+
+2. **Deploy the Application**:Apply your Kubernetes deployment and service configuration files:
+
+   ```bash
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+
+   ```
+
+3. **Get Service Url**: Retrieve the URL to access your Streamlit application:
+   ```bash
+   kubectl get streamlit-service --url
+   ```
