@@ -13,7 +13,7 @@ import base64
 import gdown
 import tempfile
 
-# Initialize all session state variables at the top of the script to avoid attribute errors
+# Function to initialize session state variables
 def initialize_session_state():
     if 'saved_predictions' not in st.session_state:
         st.session_state.saved_predictions = []
@@ -26,7 +26,7 @@ def initialize_session_state():
     if 'Predict' not in st.session_state:
         st.session_state.Predict = False
 
-# Call this function at the start of the script
+# Initialize session state variables
 initialize_session_state()
 
 # Define the model links and their target sizes
@@ -217,9 +217,10 @@ def show_image_prediction():
     st.sidebar.markdown(
         f"""
         <img src="data:image/jpeg;base64,{logo_base64}"
-            style="border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 200px;"/>
+            style="border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 90%; height: auto;" />
         """, unsafe_allow_html=True
     )
 
 # Call the function to show image prediction
-show_image_prediction()
+if __name__ == "__main__":
+    show_image_prediction()
