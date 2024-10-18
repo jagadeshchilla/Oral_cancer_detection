@@ -173,4 +173,22 @@ Below is a visual representation of the differences in performance across the mo
 
 ![Model Comparisons](./assets/diff.png)
 
+## Building Interface
+
+### Building the User Interface with Streamlit
+
+For this project, we utilized **Streamlit** to create an intuitive and user-friendly web interface for our oral cancer detection application. Streamlit is an open-source app framework specifically designed for machine learning and data science projects, allowing developers to quickly build and deploy interactive applications.
+
+### Why Streamlit?
+
+- **Simplicity:** Streamlit’s straightforward API enables rapid development without the need for complex web frameworks.
+- **Interactivity:** It allows dynamic user input, such as uploading images, which the model can then analyze in real-time.
+- **Integration:** Streamlit seamlessly integrates with popular Python libraries, making it ideal for deploying machine learning models and visualizing results.
+- **Deployment:** With built-in support for deploying applications, Streamlit simplifies sharing our project with stakeholders and users, enhancing accessibility.
+
+By leveraging Streamlit, we were able to focus on the model development and analysis while providing a polished, interactive interface for users to engage with the oral cancer detection system.
+
+
+
+
 
