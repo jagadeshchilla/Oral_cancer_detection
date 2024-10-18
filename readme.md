@@ -1,7 +1,7 @@
 # Oral Cancer Detection
 
 
-[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](./assets/gif2.gif)
+![GIF Demo](./assets/gif2.gif)
 
 ## Project Status
 
