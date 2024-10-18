@@ -12,5 +12,5 @@
 
 ## Lottie Animation
 
-[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](./assets//lottie2.json)
+[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](./assets/lottie2.json)
 
