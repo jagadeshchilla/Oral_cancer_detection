@@ -354,3 +354,41 @@ The following table summarizes the performance of various deep learning models u
 - **DenseNet121** also showed strong results, with **94%** accuracy and relatively even probabilities.
 - **CNN** displayed a solid accuracy of **93.2%**, though its average cancer probability was lower compared to other models.
 - **EfficientNet** achieved the lowest accuracy at **85.4%**, but its non-cancer probability was the highest, making it more conservative in detecting non-cancer cases.
+
+### Conclusion
+
+In this project, we explored the use of deep learning models for detecting oral cancer from medical images. By evaluating models such as **CNN**, **ResNet50**, **DenseNet121**, **EfficientNetB2**, and **VGG19**, we found that:
+
+- **ResNet50** achieved the highest accuracy of **98.2%**, making it the most reliable model for oral cancer detection in our experiments.
+- **VGG19** also performed exceptionally well with an accuracy of **96.8%**, making it another strong candidate for deployment in real-world applications.
+- Models like **DenseNet121** and **CNN** demonstrated solid performance, balancing accuracy with computational efficiency.
+- **EfficientNetB2** was the most resource-efficient but had the lowest accuracy, indicating that it may be more suitable for cases where computational resources are limited and non-cancer detection is prioritized.
+
+Overall, the models show great potential in assisting healthcare professionals with early detection of oral cancer, which is critical for improving patient outcomes. Moving forward, further fine-tuning and testing on more diverse datasets will help enhance model robustness and reliability.
+
+### Technologies Used
+
+Here are the key technologies utilized in this project:
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue.svg" alt="Python" height="40"/>
+  <img src="https://img.shields.io/badge/Jupyter_Notebook-Enabled-orange.svg" alt="Jupyter Notebook" height="40"/>
+  <img src="https://img.shields.io/badge/Streamlit-Enabled-red.svg" alt="Streamlit" height="40"/>
+  <img src="https://img.shields.io/badge/Lottie_Files-Enabled-brightgreen.svg" alt="Lottie Files" height="40"/>
+  <img src="https://img.shields.io/badge/Kubernetes-Enabled-blue.svg" alt="Kubernetes" height="40"/>
+  <img src="https://img.shields.io/badge/OpenCV2-Enabled-green.svg" alt="OpenCV2" height="40"/>
+  <img src="https://img.shields.io/badge/Numpy-Enabled-yellow.svg" alt="Numpy" height="40"/>
+  <img src="https://img.shields.io/badge/TensorFlow-2.x-orange.svg" alt="TensorFlow" height="40"/>
+  <img src="https://img.shields.io/badge/OpenCV--Python--Headless-Enabled-blue.svg" alt="OpenCV Python Headless" height="40"/>
+  <img src="https://img.shields.io/badge/Pillow-Enabled-purple.svg" alt="Pillow" height="40"/>
+  <img src="https://img.shields.io/badge/Streamlit--Option--Menu-Enabled-red.svg" alt="Streamlit Option Menu" height="40"/>
+  <img src="https://img.shields.io/badge/Pandas-Enabled-darkblue.svg" alt="Pandas" height="40"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-Enabled-lightblue.svg" alt="Scikit Learn" height="40"/>
+  <img src="https://img.shields.io/badge/Streamlit--Lottie-Enabled-pink.svg" alt="Streamlit Lottie" height="40"/>
+  <img src="https://img.shields.io/badge/Matplotlib-Enabled-green.svg" alt="Matplotlib" height="40"/>
+  <img src="https://img.shields.io/badge/Graphviz-v0.20.3-lightgray.svg" alt="Graphviz" height="40"/>
+  <img src="https://img.shields.io/badge/Pydot-Enabled-blue.svg" alt="Pydot" height="40"/>
+  <img src="https://img.shields.io/badge/Gdown-5.2.0-orange.svg" alt="Gdown" height="40"/>
+  <img src="https://img.shields.io/badge/LibGL1-Enabled-darkgreen.svg" alt="LibGL1" height="40"/>
+  <img src="https://img.shields.io/badge/GitHub-Enabled-black.svg" alt="GitHub" height="40"/>
+</p>
