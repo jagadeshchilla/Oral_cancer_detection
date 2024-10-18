@@ -245,6 +245,19 @@ To build the Docker image and push it to Docker Hub, follow these steps:
 docker build -t jagadesh086/my_streamlit_app:latest .
 ```
 
+2. ### Pushing to Docker Hub
+
+After creating the Docker image for the application, we pushed it to **Docker Hub** to enable easy access and deployment from anywhere. The steps to push the image are as follows:
+
+1. **Login to Docker Hub**:
+   ```bash
+   docker login
+   ```
+2. **Push the Image**:
+   ```bash
+   docker push jagadesh086/my_streamlit_app:latest
+   ```
+
 ### 3. Deployment Using Kubernetes
 
 For deploying the application in a more scalable environment, we utilized **Kubernetes**. We created two files, `deployment.yaml` and `service.yaml`, which defined how our Docker images should be deployed and accessed.
