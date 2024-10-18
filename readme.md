@@ -368,27 +368,17 @@ Overall, the models show great potential in assisting healthcare professionals w
 
 ### Technologies Used
 
-Here are the key technologies utilized in this project:
+In this project, we utilized the following technologies:
 
 <p align="center">
-  <img src="https://images.app.goo.gl/CvgtKyVmiAu7jTSv7" alt="Python" height="40"/>
-  <img src="https://img.shields.io/badge/Jupyter_Notebook-Enabled-orange.svg" alt="Jupyter Notebook" height="40"/>
-  <img src="https://img.shields.io/badge/Streamlit-Enabled-red.svg" alt="Streamlit" height="40"/>
-  <img src="https://img.shields.io/badge/Lottie_Files-Enabled-brightgreen.svg" alt="Lottie Files" height="40"/>
-  <img src="https://img.shields.io/badge/Kubernetes-Enabled-blue.svg" alt="Kubernetes" height="40"/>
-  <img src="https://img.shields.io/badge/OpenCV2-Enabled-green.svg" alt="OpenCV2" height="40"/>
-  <img src="https://img.shields.io/badge/Numpy-Enabled-yellow.svg" alt="Numpy" height="40"/>
-  <img src="https://img.shields.io/badge/TensorFlow-2.x-orange.svg" alt="TensorFlow" height="40"/>
-  <img src="https://img.shields.io/badge/OpenCV--Python--Headless-Enabled-blue.svg" alt="OpenCV Python Headless" height="40"/>
-  <img src="https://img.shields.io/badge/Pillow-Enabled-purple.svg" alt="Pillow" height="40"/>
-  <img src="https://img.shields.io/badge/Streamlit--Option--Menu-Enabled-red.svg" alt="Streamlit Option Menu" height="40"/>
-  <img src="https://img.shields.io/badge/Pandas-Enabled-darkblue.svg" alt="Pandas" height="40"/>
-  <img src="https://img.shields.io/badge/Scikit--Learn-Enabled-lightblue.svg" alt="Scikit Learn" height="40"/>
-  <img src="https://img.shields.io/badge/Streamlit--Lottie-Enabled-pink.svg" alt="Streamlit Lottie" height="40"/>
-  <img src="https://img.shields.io/badge/Matplotlib-Enabled-green.svg" alt="Matplotlib" height="40"/>
-  <img src="https://img.shields.io/badge/Graphviz-v0.20.3-lightgray.svg" alt="Graphviz" height="40"/>
-  <img src="https://img.shields.io/badge/Pydot-Enabled-blue.svg" alt="Pydot" height="40"/>
-  <img src="https://img.shields.io/badge/Gdown-5.2.0-orange.svg" alt="Gdown" height="40"/>
-  <img src="https://img.shields.io/badge/LibGL1-Enabled-darkgreen.svg" alt="LibGL1" height="40"/>
-  <img src="https://img.shields.io/badge/GitHub-Enabled-black.svg" alt="GitHub" height="40"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter Notebook" width="100" height="100"/>
+  <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit" width="100" height="100"/>
+  <img src="https://raw.githubusercontent.com/numpy/numpy/main/branding/logo/logomark/numpylogo.svg" alt="NumPy" width="100" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/TensorFlowLogo.png" alt="TensorFlow" width="100" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Opencv.png" alt="OpenCV" width="100" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Pandas_logo_on_white.svg" alt="Pandas" width="100" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" width="100" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Docker_logo.png" alt="Docker" width="100" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Kubernetes_logo.svg" alt="Kubernetes" width="100" height="100"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Graphviz_logo.png" alt="Graphviz" width="100" height="100"/>
 </p>
