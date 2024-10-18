@@ -50,7 +50,7 @@ The **Oral Cancer Detection** project aims to develop a robust machine learning 
 9. [Deployment](#deployment)
 10. [Results](#results)
 11. [Conclusion](#conclusion)
-12. [Technolgies Used](#technolgies-used)
+12. [Technol0gies Used](#technol0gies-used)
 13. [Installation](#installation)
 14. [Future Works](#future-works)
 15. [References](#references)
