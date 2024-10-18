@@ -15,15 +15,15 @@ import tempfile
 
 # Initialize session state variables at the top of the script
 if 'saved_predictions' not in st.session_state:
-    st.session_state.saved_predictions = []
+    st.session_state['saved_predictions'] = []
 if 'predictions' not in st.session_state:
-    st.session_state.predictions = []
+    st.session_state['predictions'] = []
 if 'uploaded_images' not in st.session_state:
-    st.session_state.uploaded_images = []
+    st.session_state['uploaded_images'] = []
 if 'model_temp_file' not in st.session_state:
-    st.session_state.model_temp_file = None
+    st.session_state['model_temp_file'] = None
 if 'Predict' not in st.session_state:
-    st.session_state.Predict = False
+    st.session_state['Predict'] = False
 
 # Define the model links and their target sizes
 model_links = {
@@ -56,7 +56,7 @@ def load_existing_predictions():
     return []
 
 # Load existing predictions into session state
-st.session_state.saved_predictions = load_existing_predictions()
+st.session_state['saved_predictions'] = load_existing_predictions()
 
 def save_predictions_to_history(uploaded_files, predictions, model_name):
     prediction_data = []
@@ -68,10 +68,10 @@ def save_predictions_to_history(uploaded_files, predictions, model_name):
             'prediction': actual
         })
 
-    st.session_state.saved_predictions.extend(prediction_data)
+    st.session_state['saved_predictions'].extend(prediction_data)
 
     with open('prediction_history.json', 'w') as f:
-        json.dump(st.session_state.saved_predictions, f, indent=4)
+        json.dump(st.session_state['saved_predictions'], f, indent=4)
     st.success("Predictions saved to history successfully.")
 
 cancer_warning_messages = [
@@ -84,15 +84,15 @@ cancer_warning_messages = [
 
 def download_and_load_model(model_url):
     """Downloads and loads the model from the provided Google Drive URL."""
-    if st.session_state.model_temp_file is None:
+    if st.session_state['model_temp_file'] is None:
         with tempfile.NamedTemporaryFile(suffix='.keras', delete=False) as tmp:
-            st.session_state.model_temp_file = tmp.name
+            st.session_state['model_temp_file'] = tmp.name
             st.toast("📥 Downloading model... Please wait.")
             with st.spinner("Downloading the model..."):
-                gdown.download(model_url, st.session_state.model_temp_file, quiet=False)
+                gdown.download(model_url, st.session_state['model_temp_file'], quiet=False)
             st.toast("✅ Model download completed!")
 
-    return load_model(st.session_state.model_temp_file)
+    return load_model(st.session_state['model_temp_file'])
 
 def show_image_prediction():
     # Streamlit UI
@@ -125,9 +125,9 @@ def show_image_prediction():
 
         # Add a button to trigger predictions
         if st.button('Predict'):
-            st.session_state.Predict = True
+            st.session_state['Predict'] = True
 
-        if st.session_state.Predict:
+        if st.session_state['Predict']:
             st.info("Downloading and loading the model. This may take a few moments...")
 
             model_url = model_links[model_selection]['url']
@@ -135,15 +135,15 @@ def show_image_prediction():
                 model_to_use = download_and_load_model(model_url)
 
             with st.spinner("Evaluating images..."):
-                st.session_state.predictions = evaluate_model(model_to_use, X_test)
-                st.session_state.uploaded_images = uploaded_files
+                st.session_state['predictions'] = evaluate_model(model_to_use, X_test)
+                st.session_state['uploaded_images'] = uploaded_files
 
             st.toast("✨ Images predicted successfully!")
 
             # Display predictions
             st.subheader('Predictions:')
             for i, uploaded_file in enumerate(uploaded_files):
-                actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
+                actual = 'Cancer' if st.session_state['predictions'][i][0] == 0 else 'Non Cancer'
                 caption = f'Predicted: {actual}'
                 st.image(uploaded_file, caption=caption, use_column_width=True)
 
@@ -155,22 +155,22 @@ def show_image_prediction():
 
     with col1:
         if st.button('Clear'):
-            st.session_state.predictions = []
-            st.session_state.uploaded_images = []
-            st.session_state.model_temp_file = None  # Reset the temp file
+            st.session_state['predictions'] = []
+            st.session_state['uploaded_images'] = []
+            st.session_state['model_temp_file'] = None  # Reset the temp file
             st.success("🗑️ Cleared all predictions and uploaded images.")
 
     with col2:
         if st.session_state.get('predictions') and st.session_state.get('uploaded_images'):
             if st.button('Save Predictions'):
                 save_predictions_to_history(
-                    st.session_state.uploaded_images, st.session_state.predictions, model_selection)
+                    st.session_state['uploaded_images'], st.session_state['predictions'], model_selection)
 
     # Download predictions functionality
     if st.session_state.get('predictions') and st.session_state.get('uploaded_images'):
         prediction_images = []
-        for i, uploaded_file in enumerate(st.session_state.uploaded_images):
-            actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
+        for i, uploaded_file in enumerate(st.session_state['uploaded_images']):
+            actual = 'Cancer' if st.session_state['predictions'][i][0] == 0 else 'Non Cancer'
             image = Image.open(uploaded_file)
             pred_image = image.copy()
             plt.imshow(pred_image)
