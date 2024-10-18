@@ -3,8 +3,6 @@
 
 <img src="./assets/lottie.gif" width="600" height="400" alt="GIF Demo">
 
-## Tech Used
-
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Jupyter Notebook](https://img.shields.io/badge/Jupyter_Notebook-Enabled-orange.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Enabled-red.svg)
@@ -40,3 +38,19 @@ The **Oral Cancer Detection** project aims to develop a robust machine learning 
 - **📊 Data Visualization:** Includes interactive visualizations using Matplotlib and Graphviz for better understanding of model predictions.
 - **🔄 Model Training and Evaluation:** Supports training with various datasets and evaluating model performance with scikit-learn.
 - **☁️ Cloud Deployment:** Enables deployment using Kubernetes for scalability and reliability.
+
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Problem Statement](#problem-statement)
+3. [Solution](#solution)
+4. [Dataset](#dataset)
+5. [Methodologies](#methodologies)
+6. [Models Used](#models-used)
+7. [Model Comparisons](#model-comparisons)
+8. [Building Interface](#building-interface)
+9. [Deployment](#deployment)
+10. [Results](#results)
+11. [Conclusion](#conclusion)
+12. [Installation](#installation)
+13. [Future Works](#future-works)
+14. [References](#references)
