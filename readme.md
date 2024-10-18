@@ -56,7 +56,7 @@ The **Oral Cancer Detection** project aims to develop a robust machine learning 
 14. [References](#references)
 
 
-## 🌟 Introduction
+## Introduction 🌟
 
 The **Oral Cancer Detection** project aims to harness the power of machine learning and image processing to accurately detect oral cancer at an early stage. 🦷 Oral cancer is a significant health concern, often leading to severe consequences if not identified promptly. This project seeks to provide a reliable tool that aids medical professionals in diagnosing oral cancer through advanced techniques. 🩺
 
