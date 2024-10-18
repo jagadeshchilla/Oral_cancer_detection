@@ -122,29 +122,34 @@ def show_image_prediction():
             return (predictions > 0.5).astype(int)
 
         # Add a button to trigger predictions
+        if 'Predict' not in st.session_state:
+            st.session_state.Predict = False
         if st.button('Predict'):
-            st.info("Downloading and loading the model. This may take a few moments...")
+            st.session_state.Predict = True
+            
+            if st.session_state.Predict:
+                st.info("Downloading and loading the model. This may take a few moments...")
 
-            model_url = model_links[model_selection]['url']
-            with st.spinner("Loading model..."):
-                model_to_use = download_and_load_model(model_url)
+                model_url = model_links[model_selection]['url']
+                with st.spinner("Loading model..."):
+                    model_to_use = download_and_load_model(model_url)
 
-            with st.spinner("Evaluating images..."):
-                st.session_state.predictions = evaluate_model(model_to_use, X_test)
-                st.session_state.uploaded_images = uploaded_files
+                with st.spinner("Evaluating images..."):
+                    st.session_state.predictions = evaluate_model(model_to_use, X_test)
+                    st.session_state.uploaded_images = uploaded_files
 
-            st.toast("✨ Images predicted successfully!")
+                st.toast("✨ Images predicted successfully!")
 
-            # Display predictions
-            st.subheader('Predictions:')
-            for i, uploaded_file in enumerate(uploaded_files):
-                actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
-                caption = f'Predicted: {actual}'
-                st.image(uploaded_file, caption=caption, use_column_width=True)
+                # Display predictions
+                st.subheader('Predictions:')
+                for i, uploaded_file in enumerate(uploaded_files):
+                    actual = 'Cancer' if st.session_state.predictions[i][0] == 0 else 'Non Cancer'
+                    caption = f'Predicted: {actual}'
+                    st.image(uploaded_file, caption=caption, use_column_width=True)
 
-                if actual == 'Cancer':
-                    warning_message = random.choice(cancer_warning_messages)
-                    st.warning(warning_message)
+                    if actual == 'Cancer':
+                        warning_message = random.choice(cancer_warning_messages)
+                        st.warning(warning_message)
 
     col1, col2 = st.columns(2)
 
