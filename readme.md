@@ -1,6 +1,5 @@
 # 🦷 Oral Cancer Detection
 
-
 <img src="./assets/lottie.gif" width="600" height="400" alt="GIF Demo">
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
@@ -24,7 +23,6 @@
 ![LibGL1](https://img.shields.io/badge/LibGL1-Enabled-darkgreen.svg)
 ![GitHub](https://img.shields.io/badge/GitHub-Enabled-black.svg)
 
-
 ## Overview
 
 The **Oral Cancer Detection** project aims to develop a robust machine learning model that leverages advanced image processing techniques to accurately identify signs of oral cancer in images. This project integrates various technologies and frameworks, providing a seamless user experience for both medical professionals and patients.
@@ -40,6 +38,7 @@ The **Oral Cancer Detection** project aims to develop a robust machine learning 
 - **☁️ Cloud Deployment:** Enables deployment using Kubernetes for scalability and reliability.
 
 ## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Problem Statement](#problem-statement)
 3. [Solution](#solution)
@@ -55,7 +54,6 @@ The **Oral Cancer Detection** project aims to develop a robust machine learning 
 13. [Installation](#installation)
 14. [Future Works](#future-works)
 15. [References](#references)
-
 
 ## Introduction
 
@@ -73,7 +71,7 @@ The need for a solution that allows medical professionals to identify oral cance
 
 ## Solution
 
-The **Oral Cancer Detection** project provides a machine learning-based solution to assist healthcare professionals in detecting oral cancer early. 🦷 By utilizing advanced deep learning techniques, this project processes and analyzes medical images to identify potential cancerous regions in the oral cavity. 
+The **Oral Cancer Detection** project provides a machine learning-based solution to assist healthcare professionals in detecting oral cancer early. 🦷 By utilizing advanced deep learning techniques, this project processes and analyzes medical images to identify potential cancerous regions in the oral cavity.
 
 This solution includes the following key components:
 
@@ -114,6 +112,7 @@ You can access the dataset [here](https://www.kaggle.com/datasets/zaidpy/oral-ca
 
 3. **🧠 Model Selection:**
    A range of cutting-edge deep learning architectures are chosen for comparison:
+
    - **CNN (Convolutional Neural Networks):** A standard deep learning model for image classification.
    - **ResNet50:** A deeper network that addresses the vanishing gradient problem using skip connections.
    - **DenseNet121:** A model that efficiently passes gradients between layers using dense connections.
@@ -125,10 +124,11 @@ You can access the dataset [here](https://www.kaggle.com/datasets/zaidpy/oral-ca
 
 5. **📊 Evaluation:**
    After training, the models are evaluated based on:
+
    - **Accuracy:** The proportion of correctly predicted labels.
    - **Speed:** How quickly the model processes new data.
    - **Memory usage:** The amount of system resources required by the model.
-   Performance metrics such as **precision**, **recall**, and **F1 score** are calculated to assess how well the models balance true positives and false negatives.
+     Performance metrics such as **precision**, **recall**, and **F1 score** are calculated to assess how well the models balance true positives and false negatives.
 
 6. **📈 Comparison:**
    Once all models are trained and evaluated, their performances are compared. The model that strikes the best balance between accuracy, speed, and resource efficiency is selected for deployment. This ensures that the deployed model is optimal for real-world use.
@@ -137,32 +137,42 @@ You can access the dataset [here](https://www.kaggle.com/datasets/zaidpy/oral-ca
 
 The following deep learning models were utilized in this project to compare their performance and select the best model for oral cancer detection:
 
-### 1. **Convolutional Neural Network (CNN)** 
+### 1. **Convolutional Neural Network (CNN)**
+
 A **Convolutional Neural Network (CNN)** is the foundation for most image classification tasks. CNNs are composed of convolutional layers that automatically learn spatial hierarchies of features (such as edges, textures, and objects). In this project:
+
 - **Advantages**: CNNs are relatively easy to train and excel in capturing local features in images.
 - **Use Case**: It serves as a baseline model, offering a simpler but powerful approach for detecting cancerous tissues in oral images.
 - **Limitations**: While CNNs work well on simpler problems, they may struggle with more complex patterns found in medical data.
 
 ### 2. **ResNet50**
+
 **ResNet50 (Residual Networks)** is a deeper network with 50 layers that incorporates **residual connections** (or skip connections) to solve the vanishing gradient problem common in deep networks. This makes it highly effective for complex tasks like medical image classification.
+
 - **Advantages**: The residual connections enable the network to learn much deeper representations without degrading performance.
 - **Use Case**: ResNet50 excels in detecting intricate patterns in medical images, making it a great candidate for identifying cancerous tissues.
 - **Limitations**: As the network becomes deeper, it requires more computation power, increasing the time required for training.
 
 ### 3. **DenseNet121**
+
 **DenseNet121 (Densely Connected Convolutional Networks)** employs dense blocks, where each layer is directly connected to every other layer, allowing feature reuse and improving efficiency.
+
 - **Advantages**: DenseNet121 captures detailed information by reusing features, which can help the model efficiently learn the critical features needed for cancer detection.
 - **Use Case**: Its ability to learn complex features makes it well-suited for cancer detection, as it captures small yet significant features in oral images.
 - **Limitations**: DenseNet can be computationally demanding, especially when dealing with large datasets.
 
 ### 4. **EfficientNetB2**
+
 **EfficientNetB2** is part of the EfficientNet family, which scales model dimensions—width, depth, and resolution—in a balanced manner, optimizing performance while using fewer parameters.
+
 - **Advantages**: EfficientNetB2 provides high accuracy with fewer parameters, which is beneficial for resource-constrained environments (e.g., mobile applications or cloud-based deployments).
 - **Use Case**: Its efficiency and accuracy make it an ideal choice for real-time cancer detection tasks where computational resources may be limited.
 - **Limitations**: While it uses fewer parameters, EfficientNetB2 may still require considerable tuning and experimentation to optimize performance on highly complex tasks.
 
 ### 5. **VGG19**
+
 **VGG19** is a very deep network with 19 layers, known for its simplicity and high performance in transfer learning tasks. It’s frequently used in medical imaging tasks due to its ability to generalize well from pretrained weights.
+
 - **Advantages**: VGG19 is straightforward in architecture and powerful when fine-tuned on specific tasks, such as detecting cancer in oral images.
 - **Use Case**: It’s often used for transfer learning, leveraging pretrained weights to adapt quickly to the specific task of oral cancer detection.
 - **Limitations**: VGG19 is resource-intensive and slower compared to other models, which can make training and inference more time-consuming.
@@ -188,7 +198,103 @@ For this project, we utilized **Streamlit** to create an intuitive and user-frie
 
 By leveraging Streamlit, we were able to focus on the model development and analysis while providing a polished, interactive interface for users to engage with the oral cancer detection system.
 
+## Deployment
 
+### 1. Deployment on Streamlit Cloud
 
+The project has been deployed on **Streamlit Cloud** to make the oral cancer detection application accessible to users. The deployment process involved the following steps:
 
+- **Pushed the Project to GitHub**: The complete codebase was uploaded to a GitHub repository, allowing version control and collaboration.
+- **Deployed on Streamlit Cloud**: Using the GitHub repository, the project was deployed directly to Streamlit Cloud. This allows users to run the application in their web browser without any local setup.
 
+Streamlit Cloud provides a seamless way to host applications, ensuring that users can easily interact with the model and visualize results.
+
+### 2. Deployment Using Docker
+
+In addition to Streamlit Cloud, we also utilized **Docker** for deployment. The Docker deployment process involved:
+
+- **Creating a Dockerfile**: We created a Dockerfile that contains the instructions for building the Docker image, including the application's dependencies and configurations. Here is a sample Dockerfile:
+
+```dockerfile
+     # Use the official Python image from the Docker Hub
+FROM python:3.8-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements.txt file into the container
+COPY requirements.txt .
+
+# Install the required Python packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Specify the command to run the Streamlit app
+CMD ["streamlit", "run", "your_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+```
+
+### Building Docker Images and Pushing to Docker Hub
+
+To build the Docker image and push it to Docker Hub, follow these steps:
+
+1. **Build the Docker Image**: Run the following command in your terminal, ensuring you are in the directory containing your `Dockerfile`:
+
+```bash
+docker build -t jagadesh086/my_streamlit_app:latest .
+```
+
+### 3. Deployment Using Kubernetes
+
+For deploying the application in a more scalable environment, we utilized **Kubernetes**. We created two files, `deployment.yaml` and `service.yaml`, which defined how our Docker images should be deployed and accessed.
+
+#### Deployment Configuration
+
+Here’s the configuration for `deployment.yaml`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit-app
+  labels:
+    app: streamlit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streamlit
+  template:
+    metadata:
+      labels:
+        app: streamlit
+    spec:
+      containers:
+        - name: streamlit-app
+          image: jagadesh086/my_streamlit_app:latest
+          ports:
+            - containerPort: 8501
+```
+
+### Service Configuration
+
+In order to expose our Streamlit application to the outside world, we defined a Kubernetes **Service**. This allows users to access the application via a specific port on the cluster.
+
+Here’s the configuration for `service.yaml`:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit-service
+spec:
+  type: NodePort
+  selector:
+    app: streamlit
+  ports:
+    - protocol: TCP
+      port: 8501
+      targetPort: 8501
+      nodePort: 30000 # You can choose any available port from 30000 to 32767
+```
