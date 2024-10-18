@@ -371,7 +371,7 @@ Overall, the models show great potential in assisting healthcare professionals w
 Here are the key technologies utilized in this project:
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-blue.svg" alt="Python" height="40"/>
+  <img src="https://images.app.goo.gl/CvgtKyVmiAu7jTSv7" alt="Python" height="40"/>
   <img src="https://img.shields.io/badge/Jupyter_Notebook-Enabled-orange.svg" alt="Jupyter Notebook" height="40"/>
   <img src="https://img.shields.io/badge/Streamlit-Enabled-red.svg" alt="Streamlit" height="40"/>
   <img src="https://img.shields.io/badge/Lottie_Files-Enabled-brightgreen.svg" alt="Lottie Files" height="40"/>
