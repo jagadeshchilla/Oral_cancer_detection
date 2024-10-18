@@ -102,6 +102,7 @@ def show_image_prediction():
     # Upload images
     uploaded_files = st.file_uploader(
         "Upload images", type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
+    st.write(st.session_state)
 
     if uploaded_files:
         target_size = model_links[model_selection]['target_size']
@@ -152,7 +153,7 @@ def show_image_prediction():
                         st.warning(warning_message)
 
     col1, col2 = st.columns(2)
-
+    
     with col1:
         if st.button('Clear'):
             st.session_state.predictions = []
