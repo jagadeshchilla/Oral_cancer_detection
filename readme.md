@@ -414,3 +414,46 @@ streamlit run app.py
 ```
 
 This will start the application, which you can access in your browser at http://localhost:8501.
+
+### 4.Docker Deployment (optional)
+
+You can also run the application using Docker for a more containerized solution.
+
+### Steps to deploy using Docker:
+
+1. **Pull the Docker Image**  
+   First, pull the pre-built image from Docker Hub:
+
+   ```bash
+   docker pull jagadesh086/my_streamlit_app:latest
+   ```
+
+2. **Run the Docker Container**
+   ```bash
+   docker run -p 8501:8501 jagadesh086/my_streamlit_app:latest
+   ```
+   Access the app in your browser at http://localhost:8501.
+
+### Minikube Commands
+
+If you prefer to deploy the application using Kubernetes, follow these steps:
+
+1. **Start Minikube**: Use the following command to start your Minikube cluster:
+
+   ```bash
+   minikube start
+
+   ```
+
+2. **Deploy the Application**:Apply your Kubernetes deployment and service configuration files:
+
+   ```bash
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+
+   ```
+
+3. **Get Service Url**: Retrieve the URL to access your Streamlit application:
+   ```bash
+   kubectl get streamlit-service --url
+   ```
