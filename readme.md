@@ -1,6 +1,7 @@
 # Oral Cancer Detection
 
-![Logo](./assets/logo1.png)
+
+[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](./assets/gif2.gif)
 
 ## Project Status
 
@@ -10,7 +11,5 @@
 ![CNN](https://img.shields.io/badge/Model-CNN-green.svg)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)
 
-## Lottie Animation
 
-[![Lottie Animation](https://lottiefiles.com/path-to-lottie-preview)](./assets/lottie2.json)
 
